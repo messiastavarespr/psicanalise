@@ -318,46 +318,14 @@ const BookingWizard: React.FC<BookingWizardProps> = ({
           )}
 
           {step === 'datetime' && (
-            <div className="fade-in">
-              <div className="grid lg:grid-cols-2 gap-8 lg:gap-20">
-                <div className="bg-[#FAF9F6] p-4 md:p-10 rounded-[30px] md:rounded-[50px] border border-slate-200">
-                  <div className="flex justify-between items-center mb-6 md:mb-10">
-                    <button onClick={() => setViewDate(new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, 1))} className="p-2 md:p-3 bg-white rounded-full"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg></button>
-                    <h4 className="text-base md:text-xl font-serif font-bold text-slate-900">{monthNames[viewDate.getMonth()]} {viewDate.getFullYear()}</h4>
-                    <button onClick={() => setViewDate(new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1))} className="p-2 md:p-3 bg-white rounded-full"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg></button>
-                  </div>
-                  <div className="grid grid-cols-7 gap-1 md:gap-3 mb-4">
-                    {weekDays.map(d => <div key={d} className="text-center text-[8px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest">{d}</div>)}
-                  </div>
-                  <div className="grid grid-cols-7 gap-1 md:gap-3">
-                    {calendarDays.map((day, idx) => {
-                      if (day === null) return <div key={`empty-${idx}`} />;
-                      const dateStr = `${viewDate.getFullYear()}-${String(viewDate.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                      const isSelected = selectedDate === dateStr;
-                      const isPast = new Date(dateStr + 'T23:59:59') < new Date();
-                      return (
-                        <button
-                          key={idx}
-                          disabled={isPast}
-                          onClick={() => setSelectedDate(dateStr)}
-                          className={`aspect-square rounded-lg md:rounded-[20px] text-xs md:text-sm font-bold transition-all ${isSelected ? 'bg-slate-900 text-white scale-105' : isPast ? 'text-slate-200' : 'bg-white text-slate-700 shadow-sm active:scale-90'}`}
-                        >
-                          {day}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <div>
-
-                  <div className="grid grid-cols-3 md:grid-cols-2 gap-2 md:gap-4 max-h-[300px] md:max-h-[440px] overflow-y-auto pr-2 custom-scrollbar">
-                    {filteredAvailableSlots.map(time => (<button key={time} onClick={() => setSelectedTime(time)} className={`py-3 md:p-6 rounded-xl md:rounded-3xl border text-xs md:text-base font-bold transition-all ${selectedTime === time ? 'bg-slate-900 text-white border-slate-900' : 'bg-white border-slate-100 text-slate-700 active:bg-slate-50'}`}>{time}</button>))}
-                    {filteredAvailableSlots.length === 0 && selectedDate && <p className="col-span-full text-center py-12 text-slate-300 italic text-xs">Nenhum horário disponível para esta data.</p>}
-                  </div>
-                </div>
-              </div>
-              <button disabled={!selectedDate || !selectedTime} onClick={handleNext} className="mt-12 md:mt-20 w-full bg-slate-900 text-white py-5 md:py-8 rounded-full font-bold text-base md:text-lg active:scale-[0.98] transition-all shadow-xl disabled:opacity-30">Confirmar Horário</button>
+            <div className="fade-in w-full">
+              <iframe
+                width='100%'
+                height='750px'
+                src='https://psicanalistamessiastavares.zohobookings.com/portal-embed#/4742703000000048054'
+                frameBorder='0'
+                allowFullScreen
+              />
             </div>
           )}
 
